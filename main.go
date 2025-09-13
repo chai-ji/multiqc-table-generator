@@ -30,7 +30,12 @@ func tsvToHtml(path string)(string, error){
 	reader.FieldsPerRecord = -1
 
 	var htmlStr strings.Builder
-	htmlStr.WriteString("<table>\n")
+	htmlStr.WriteString(`<style>
+#my-custom-table tbody:nth-child(even) {
+background-color: #f2f2f2;
+}
+</style>
+<table class="table" style="width:100%" id="my-custom-table">` + "\n")
 
 	for {
 		record, err := reader.Read()

@@ -65,7 +65,10 @@ process CONVERT_TABLE {
 
     script:
     """
-    multiqc-table-generator "$input_table" > table.yml
+    multiqc-table-generator \
+    -description "Custom sample table" \
+    -section-name "Samples Table" \
+    "$input_table" > table.yml
     """
 }
 

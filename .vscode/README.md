@@ -1,0 +1,2 @@
+- https://code.visualstudio.com/docs/languages/go#:~:text=You%20can%20disable
+- https://stackoverflow.com/questions/48124565/why-does-vscode-delete-golang-source-on-save

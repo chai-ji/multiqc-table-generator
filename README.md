@@ -16,5 +16,6 @@ make build
 
 # Related
 
+- https://docs.seqera.io/multiqc/custom_content
 - https://github.com/stevekm/dumpSoftwareVersions
   - https://github.com/stevekm/nextflow-demos/tree/master/dumpsoftwareversions

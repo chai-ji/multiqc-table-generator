@@ -3,3 +3,5 @@
 output/*
 output*
 work*
+multiqc-table-generator
+build/

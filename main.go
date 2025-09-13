@@ -57,9 +57,9 @@ func indent(n int, s string) string {
 }
 
 // https://pkg.go.dev/text/template
-func makeTableYAML(tableStr string)(string){
+func makeTableYAML(tableStr string, sectionName string, description string)(string){
 	tmplStr := `data: |4-
-{{ indent 2 .Html }}
+{{ indent 4 .Html }}
 description: {{ .Description }}
 plot_type: html
 section_href: https://github.com/default-manifest-name
@@ -72,8 +72,8 @@ section_name: default-manifest-name {{ .SectionName }}
 	}
 	var templateData = TemplateData{
 		Html: tableStr,
-		Description: "This is the description",
-		SectionName: "Section Name Goes Here",
+		Description: description,
+		SectionName: sectionName,
 	}
 
 	tmpl := template.Must(template.New("yaml").
@@ -92,6 +92,8 @@ section_name: default-manifest-name {{ .SectionName }}
 func main() {
 	// command line args
 	// outputFile := flag.String("output", "output.yml", "output filename")
+	sectionName := flag.String("section-name", "Section Name", "Section Name label text")
+	description := flag.String("description", "Table Description", "Table Description text")
 	flag.Parse()
 
 	// first positional arg passed
@@ -108,7 +110,7 @@ func main() {
 		log.Fatalf("error loading input table: %v", err)
 	}
 
-	fmt.Println(makeTableYAML(htmlStr))
+	fmt.Println(makeTableYAML(htmlStr, *sectionName, *description))
 
 
 }

@@ -12,3 +12,9 @@ make build
 ./multiqc-table-generator example/output/passed.tsv > test.yml
 
 ```
+
+
+# Related
+
+- https://github.com/stevekm/dumpSoftwareVersions
+  - https://github.com/stevekm/nextflow-demos/tree/master/dumpsoftwareversions

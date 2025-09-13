@@ -54,18 +54,29 @@ process DO_THING3 {
     """
 }
 
-process FAKE_MULTIQC {
+process CONVERT_TABLE {
+    input:
+    path(input_table)
+
+    output:
+    path("table.yml"), emit: table
+
+    script:
+    """
+    multiqc-table-generator "$input_table" > table.yml
+    """
+}
+
+process MULTIQC {
     // put your multiqc here to do thing with the table you made
     debug true
 
     input:
-    path(input_file)
+    path(config_file)
 
     script:
     """
-    echo "put your multiqc with the table here"
-    echo "here is your table:"
-    cat "${input_file}"
+    multiqc --force --config "${config_file}" .
     """
 }
 
@@ -94,5 +105,6 @@ workflow {
             return "${sampleId}\t${processList}"
         }
         .collectFile(name: "passed.tsv", storeDir: "output", newLine: true)
-    FAKE_MULTIQC(samplesTable)
+    CONVERT_TABLE(samplesTable)
+    MULTIQC(CONVERT_TABLE.out.table)
 }

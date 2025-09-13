@@ -58,12 +58,14 @@ func indent(n int, s string) string {
 
 // https://pkg.go.dev/text/template
 func makeTableYAML(tableStr string, sectionName string, description string)(string){
-	tmplStr := `data: |4-
-{{ indent 4 .Html }}
-description: {{ .Description }}
-plot_type: html
-section_href: https://github.com/default-manifest-name
-section_name: default-manifest-name {{ .SectionName }}
+	tmplStr := `custom_data:
+    custom_table:
+        data: |4-
+{{ indent 12 .Html }}
+        description: {{ .Description }}
+        plot_type: html
+        # section_href: https://github.com/default-manifest-name
+        section_name: {{ .SectionName }}
 `
 	type TemplateData struct {
 		Html string

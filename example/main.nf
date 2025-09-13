@@ -55,6 +55,8 @@ process DO_THING3 {
 }
 
 process CONVERT_TABLE {
+    publishDir "output", mode: 'copy'
+
     input:
     path(input_table)
 
@@ -70,9 +72,13 @@ process CONVERT_TABLE {
 process MULTIQC {
     // put your multiqc here to do thing with the table you made
     debug true
+    publishDir "output", mode: 'copy'
 
     input:
     path(config_file)
+
+    output:
+    path("*.html")
 
     script:
     """

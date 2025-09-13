@@ -1,0 +1,27 @@
+custom_data:
+    custom_table:
+        data: |4-
+            <table>
+              <tr>
+                <td>Sample1</td>
+                <td>[INPUT, DO_THING2, DO_THING3]</td>
+              </tr>
+              <tr>
+                <td>Sample3</td>
+                <td>[INPUT, DO_THING2, DO_THING]</td>
+              </tr>
+              <tr>
+                <td>Sample4</td>
+                <td>[INPUT, DO_THING, DO_THING3, DO_THING2]</td>
+              </tr>
+              <tr>
+                <td>Sample2</td>
+                <td>[INPUT, DO_THING, DO_THING3]</td>
+              </tr>
+            </table>
+            
+        description: Table Description
+        plot_type: html
+        # section_href: https://github.com/default-manifest-name
+        section_name: Section Name
+
